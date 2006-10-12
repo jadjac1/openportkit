@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Debug</key>
+	<true/>
+	<key>Label</key>
+	<string>net.sunburstweb.openpmp</string>
+	<key>OnDemand</key>
+	<true/>
+	<key>Program</key>
+	<string>/Users/fungame/PMPKit/build/Debug/PortForwardingHelper</string>
+	<key>ServiceIPC</key>
+	<true/>
+	<key>Sockets</key>
+	<dict>
+		<key>UNIX</key>
+		<dict>
+			<key>SockFamily</key>
+			<string>Unix</string>
+			<key>SockPassive</key>
+			<true/>
+			<key>SockPathName</key>
+			<string>/tmp/PFSocket</string>
+			<key>SockType</key>
+			<string>stream</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
