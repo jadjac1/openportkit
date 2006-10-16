@@ -9,7 +9,7 @@
 	<key>OnDemand</key>
 	<true/>
 	<key>Program</key>
-	<string>/Users/fungame/PMPKit/build/Debug/PortForwardingHelper</string>
+	<string>/Library/Frameworks/OpenPort.framework/Resources/PortForwardServer</string>
 	<key>ServiceIPC</key>
 	<true/>
 	<key>Sockets</key>
