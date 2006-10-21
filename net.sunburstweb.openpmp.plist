@@ -4,12 +4,14 @@
 <dict>
 	<key>Debug</key>
 	<true/>
+	<key>GroupName</key>
+	<string>nobody</string>
 	<key>Label</key>
 	<string>net.sunburstweb.openpmp</string>
 	<key>OnDemand</key>
 	<true/>
 	<key>Program</key>
-	<string>/Library/Frameworks/OpenPort.framework/Resources/PortForwardServer</string>
+	<string>/Library/Frameworks/OpenPort.framework/Resources/PortForwardingHelper</string>
 	<key>ServiceIPC</key>
 	<true/>
 	<key>Sockets</key>
@@ -20,11 +22,15 @@
 			<string>Unix</string>
 			<key>SockPassive</key>
 			<true/>
+			<key>SockPathMode</key>
+			<integer>511</integer>
 			<key>SockPathName</key>
-			<string>/tmp/PFSocket</string>
+			<string>/tmp/OpenPortKitHelper.sock</string>
 			<key>SockType</key>
 			<string>stream</string>
 		</dict>
 	</dict>
+	<key>UserName</key>
+	<string>nobody</string>
 </dict>
 </plist>

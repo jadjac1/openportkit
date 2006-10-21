@@ -9,9 +9,9 @@
  */
 
 #import <Cocoa/Cocoa.h>
-
+#import <OpenPort/OpenPort.h>
 
 @interface PortForwardTest : NSObject {
-	NSConnection *connection;
+	EZPortMapper *mPortMapper;
 }
 @end

@@ -7,29 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8DD76F9A0486AA7600D96B5E /* PMPKitTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* PMPKitTest.m */; settings = {ATTRIBUTES = (); }; };
-		8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
-		A901BA250AE35A5200DE485F /* PortForwardClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F338B0AD974F300DEF1FD /* PortForwardClient.m */; };
-		A901BA260AE35A5400DE485F /* PortForwardClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A94F338A0AD974F300DEF1FD /* PortForwardClient.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		A901BA250AE35A5200DE485F /* EZPortForwardClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F338B0AD974F300DEF1FD /* EZPortForwardClient.m */; };
+		A901BA260AE35A5400DE485F /* EZPortForwardClient.h in Headers */ = {isa = PBXBuildFile; fileRef = A94F338A0AD974F300DEF1FD /* EZPortForwardClient.h */; settings = {ATTRIBUTES = (); }; };
 		A901BA2A0AE35AA500DE485F /* EZPortMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A91E5DA80AD021C60027EC75 /* EZPortMapper.m */; };
-		A901BA2B0AE35AA900DE485F /* EZPortMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A91E5DA70AD021C60027EC75 /* EZPortMapper.h */; };
+		A901BA2B0AE35AA900DE485F /* EZPortMapper.h in Headers */ = {isa = PBXBuildFile; fileRef = A91E5DA70AD021C60027EC75 /* EZPortMapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A901BA2F0AE35AC600DE485F /* OpenPort.h in Headers */ = {isa = PBXBuildFile; fileRef = A901BA2E0AE35AC600DE485F /* OpenPort.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A91E5DA90AD021C60027EC75 /* EZPortMapper.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A91E5DA70AD021C60027EC75 /* EZPortMapper.h */; };
-		A91E5DAA0AD021C60027EC75 /* EZPortMapper.m in Sources */ = {isa = PBXBuildFile; fileRef = A91E5DA80AD021C60027EC75 /* EZPortMapper.m */; };
-		A91E5DB00AD0221E0027EC75 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91E5DAF0AD0221E0027EC75 /* CoreFoundation.framework */; };
-		A94F2FA90AD05B4100DEF1FD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94F2FA80AD05B4100DEF1FD /* SystemConfiguration.framework */; };
-		A94F304D0AD0C72400DEF1FD /* EZPortMapperHelpers.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A94F304B0AD0C72400DEF1FD /* EZPortMapperHelpers.h */; };
-		A94F304E0AD0C72400DEF1FD /* EZPortMapperHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F304C0AD0C72400DEF1FD /* EZPortMapperHelpers.m */; };
 		A94F31240AD3731400DEF1FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
 		A94F31A10AD3731700DEF1FD /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94F2FA80AD05B4100DEF1FD /* SystemConfiguration.framework */; };
 		A94F31C00AD3735000DEF1FD /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A91E5DAF0AD0221E0027EC75 /* CoreFoundation.framework */; };
-		A94F32070AD5F5F300DEF1FD /* PortForwardServer.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A94F32050AD5F5F300DEF1FD /* PortForwardServer.h */; };
 		A94F321A0AD5F82400DEF1FD /* PortForwardingHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F31EB0AD3738D00DEF1FD /* PortForwardingHelper.m */; };
 		A94F321B0AD5F82400DEF1FD /* PortForwardServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F32060AD5F5F300DEF1FD /* PortForwardServer.m */; };
-		A94F32520AD6023600DEF1FD /* PortForwardTest.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A94F32500AD6023600DEF1FD /* PortForwardTest.h */; };
 		A94F328D0AD78E3F00DEF1FD /* PortForwardTest.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F32510AD6023600DEF1FD /* PortForwardTest.m */; };
 		A94F328E0AD78E4800DEF1FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB779EFE84155DC02AAC07 /* Foundation.framework */; };
-		A94F338C0AD974F300DEF1FD /* PortForwardClient.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = A94F338A0AD974F300DEF1FD /* PortForwardClient.h */; };
+		A987149C0AE8646000E1BBAC /* PortForwardingHelper in CopyFiles */ = {isa = PBXBuildFile; fileRef = A94F31220AD372C700DEF1FD /* PortForwardingHelper */; };
+		A98714B70AE865BD00E1BBAC /* OpenPort.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A901BA190AE35A0B00DE485F /* OpenPort.framework */; };
 		A9CDD13C0ADE07AC00CB596D /* EZPortMapperHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = A94F304C0AD0C72400DEF1FD /* EZPortMapperHelpers.m */; };
 /* End PBXBuildFile section */
 
@@ -38,32 +29,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A94F31210AD372C700DEF1FD /* PortForwardingHelper */;
+			remoteGlobalIDString = A94F31210AD372C700DEF1FD;
 			remoteInfo = PortForwardingHelper;
 		};
-		A94F32A50AD790BF00DEF1FD /* PBXContainerItemProxy */ = {
+		A98714180AE8640800E1BBAC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 08FB7793FE84155DC02AAC07 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = A94F31210AD372C700DEF1FD;
-			remoteInfo = PortForwardingHelper;
+			remoteGlobalIDString = A901BA180AE35A0B00DE485F;
+			remoteInfo = "OpenPort Framework";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		8DD76F9E0486AA7600D96B5E /* CopyFiles */ = {
+		A987141E0AE8644300E1BBAC /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 8;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 7;
 			files = (
-				A91E5DA90AD021C60027EC75 /* EZPortMapper.h in CopyFiles */,
-				A94F304D0AD0C72400DEF1FD /* EZPortMapperHelpers.h in CopyFiles */,
-				A94F32070AD5F5F300DEF1FD /* PortForwardServer.h in CopyFiles */,
-				A94F32520AD6023600DEF1FD /* PortForwardTest.h in CopyFiles */,
-				A94F338C0AD974F300DEF1FD /* PortForwardClient.h in CopyFiles */,
+				A987149C0AE8646000E1BBAC /* PortForwardingHelper in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -71,8 +58,7 @@
 		08FB7796FE84155DC02AAC07 /* PMPKitTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PMPKitTest.m; path = Source/PMPKitTest.m; sourceTree = "<group>"; };
 		08FB779EFE84155DC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32A70AAB03705E1F00C91783 /* PMPKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMPKit_Prefix.pch; sourceTree = "<group>"; };
-		8DD76FA10486AA7600D96B5E /* PMPKit */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "compiled.mach-o.executable"; path = PMPKit; sourceTree = BUILT_PRODUCTS_DIR; };
-		A901BA190AE35A0B00DE485F /* OpenPort Framework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "OpenPort Framework.framework"; path = "build/Release/OpenPort Framework.framework"; sourceTree = "<group>"; };
+		A901BA190AE35A0B00DE485F /* OpenPort.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = OpenPort.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A901BA1A0AE35A0B00DE485F /* OpenPort Framework-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "OpenPort Framework-Info.plist"; sourceTree = "<group>"; };
 		A901BA2E0AE35AC600DE485F /* OpenPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenPort.h; sourceTree = "<group>"; };
 		A91E5DA70AD021C60027EC75 /* EZPortMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EZPortMapper.h; path = Source/EZPortMapper.h; sourceTree = "<group>"; };
@@ -88,21 +74,11 @@
 		A94F32500AD6023600DEF1FD /* PortForwardTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortForwardTest.h; path = Source/PortForwardingHelper/PortForwardTest.h; sourceTree = "<group>"; };
 		A94F32510AD6023600DEF1FD /* PortForwardTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortForwardTest.m; path = Source/PortForwardingHelper/PortForwardTest.m; sourceTree = "<group>"; };
 		A94F32880AD78C2B00DEF1FD /* PortForwardingTester */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = PortForwardingTester; sourceTree = BUILT_PRODUCTS_DIR; };
-		A94F338A0AD974F300DEF1FD /* PortForwardClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortForwardClient.h; path = Source/PortForwardingHelper/PortForwardClient.h; sourceTree = "<group>"; };
-		A94F338B0AD974F300DEF1FD /* PortForwardClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortForwardClient.m; path = Source/PortForwardingHelper/PortForwardClient.m; sourceTree = "<group>"; };
+		A94F338A0AD974F300DEF1FD /* EZPortForwardClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EZPortForwardClient.h; path = Source/PortForwardingHelper/EZPortForwardClient.h; sourceTree = "<group>"; };
+		A94F338B0AD974F300DEF1FD /* EZPortForwardClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EZPortForwardClient.m; path = Source/PortForwardingHelper/EZPortForwardClient.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8DD76F9B0486AA7600D96B5E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8DD76F9C0486AA7600D96B5E /* Foundation.framework in Frameworks */,
-				A91E5DB00AD0221E0027EC75 /* CoreFoundation.framework in Frameworks */,
-				A94F2FA90AD05B4100DEF1FD /* SystemConfiguration.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A901BA170AE35A0B00DE485F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,6 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A98714B70AE865BD00E1BBAC /* OpenPort.framework in Frameworks */,
 				A94F328E0AD78E4800DEF1FD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -171,10 +148,9 @@
 		1AB674ADFE9D54B511CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8DD76FA10486AA7600D96B5E /* PMPKit */,
 				A94F31220AD372C700DEF1FD /* PortForwardingHelper */,
 				A94F32880AD78C2B00DEF1FD /* PortForwardingTester */,
-				A901BA190AE35A0B00DE485F /* OpenPort Framework.framework */,
+				A901BA190AE35A0B00DE485F /* OpenPort.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -187,8 +163,8 @@
 				A94F32060AD5F5F300DEF1FD /* PortForwardServer.m */,
 				A94F32500AD6023600DEF1FD /* PortForwardTest.h */,
 				A94F32510AD6023600DEF1FD /* PortForwardTest.m */,
-				A94F338A0AD974F300DEF1FD /* PortForwardClient.h */,
-				A94F338B0AD974F300DEF1FD /* PortForwardClient.m */,
+				A94F338A0AD974F300DEF1FD /* EZPortForwardClient.h */,
+				A94F338B0AD974F300DEF1FD /* EZPortForwardClient.m */,
 			);
 			name = "Port Forward Helper";
 			sourceTree = "<group>";
@@ -207,7 +183,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A901BA260AE35A5400DE485F /* PortForwardClient.h in Headers */,
+				A901BA260AE35A5400DE485F /* EZPortForwardClient.h in Headers */,
 				A901BA2B0AE35AA900DE485F /* EZPortMapper.h in Headers */,
 				A901BA2F0AE35AC600DE485F /* OpenPort.h in Headers */,
 			);
@@ -216,24 +192,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		8DD76F960486AA7600D96B5E /* PMPKit */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "PMPKit" */;
-			buildPhases = (
-				8DD76F990486AA7600D96B5E /* Sources */,
-				8DD76F9B0486AA7600D96B5E /* Frameworks */,
-				8DD76F9E0486AA7600D96B5E /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PMPKit;
-			productInstallPath = "$(HOME)/bin";
-			productName = PMPKit;
-			productReference = 8DD76FA10486AA7600D96B5E /* PMPKit */;
-			productType = "com.apple.product-type.tool";
-		};
 		A901BA180AE35A0B00DE485F /* OpenPort Framework */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A901BA1C0AE35A0C00DE485F /* Build configuration list for PBXNativeTarget "OpenPort Framework" */;
@@ -242,6 +200,7 @@
 				A901BA150AE35A0B00DE485F /* Resources */,
 				A901BA160AE35A0B00DE485F /* Sources */,
 				A901BA170AE35A0B00DE485F /* Frameworks */,
+				A987141E0AE8644300E1BBAC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -250,7 +209,7 @@
 			);
 			name = "OpenPort Framework";
 			productName = "OpenPort Framework";
-			productReference = A901BA190AE35A0B00DE485F /* OpenPort Framework.framework */;
+			productReference = A901BA190AE35A0B00DE485F /* OpenPort.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		A94F31210AD372C700DEF1FD /* PortForwardingHelper */ = {
@@ -279,7 +238,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				A94F32A60AD790BF00DEF1FD /* PBXTargetDependency */,
+				A98714190AE8640800E1BBAC /* PBXTargetDependency */,
 			);
 			name = PortForwardingTester;
 			productName = PortForwardingTester;
@@ -296,7 +255,6 @@
 			mainGroup = 08FB7794FE84155DC02AAC07 /* PMPKit */;
 			projectDirPath = "";
 			targets = (
-				8DD76F960486AA7600D96B5E /* PMPKit */,
 				A94F31210AD372C700DEF1FD /* PortForwardingHelper */,
 				A94F32870AD78C2B00DEF1FD /* PortForwardingTester */,
 				A901BA180AE35A0B00DE485F /* OpenPort Framework */,
@@ -315,21 +273,11 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		8DD76F990486AA7600D96B5E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8DD76F9A0486AA7600D96B5E /* PMPKitTest.m in Sources */,
-				A91E5DAA0AD021C60027EC75 /* EZPortMapper.m in Sources */,
-				A94F304E0AD0C72400DEF1FD /* EZPortMapperHelpers.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A901BA160AE35A0B00DE485F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A901BA250AE35A5200DE485F /* PortForwardClient.m in Sources */,
+				A901BA250AE35A5200DE485F /* EZPortForwardClient.m in Sources */,
 				A901BA2A0AE35AA500DE485F /* EZPortMapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -360,46 +308,14 @@
 			target = A94F31210AD372C700DEF1FD /* PortForwardingHelper */;
 			targetProxy = A901BA230AE35A2700DE485F /* PBXContainerItemProxy */;
 		};
-		A94F32A60AD790BF00DEF1FD /* PBXTargetDependency */ = {
+		A98714190AE8640800E1BBAC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = A94F31210AD372C700DEF1FD /* PortForwardingHelper */;
-			targetProxy = A94F32A50AD790BF00DEF1FD /* PBXContainerItemProxy */;
+			target = A901BA180AE35A0B00DE485F /* OpenPort Framework */;
+			targetProxy = A98714180AE8640800E1BBAC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1DEB927508733DD40010E9CD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_MODEL_TUNING = G5;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PMPKit_Prefix.pch;
-				INSTALL_PATH = "$(HOME)/bin";
-				PRODUCT_NAME = PMPKit;
-				ZERO_LINK = YES;
-			};
-			name = Debug;
-		};
-		1DEB927608733DD40010E9CD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = PMPKit_Prefix.pch;
-				INSTALL_PATH = "$(HOME)/bin";
-				PRODUCT_NAME = PMPKit;
-			};
-			name = Release;
-		};
 		1DEB927908733DD40010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -432,21 +348,19 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_MODEL_TUNING = G5;
+				GCC_MODEL_TUNING = G4;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "OpenPort Framework-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = /Library/Frameworks;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
-					"-framework",
-					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "OpenPort Framework";
-				ZERO_LINK = YES;
+				PRODUCT_NAME = OpenPort;
+				ZERO_LINK = NO;
 			};
 			name = Debug;
 		};
@@ -459,19 +373,17 @@
 				FRAMEWORK_VERSION = A;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_MODEL_TUNING = G5;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/AppKit.framework/Headers/AppKit.h";
+				GCC_MODEL_TUNING = G4;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "OpenPort Framework-Info.plist";
-				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				INSTALL_PATH = /Library/Frameworks;
 				OTHER_LDFLAGS = (
 					"-framework",
 					Foundation,
-					"-framework",
-					AppKit,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = "OpenPort Framework";
+				PRODUCT_NAME = OpenPort;
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -567,15 +479,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB927408733DD40010E9CD /* Build configuration list for PBXNativeTarget "PMPKit" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1DEB927508733DD40010E9CD /* Debug */,
-				1DEB927608733DD40010E9CD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		1DEB927808733DD40010E9CD /* Build configuration list for PBXProject "OpenPortKit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

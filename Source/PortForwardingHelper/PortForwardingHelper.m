@@ -30,7 +30,7 @@ int main(int argc, char **argv) {
 	launch_data_t unixSocketArray = launch_data_dict_lookup(socketsDictionary, "UNIX");
 	
 	if (launch_data_array_get_count(unixSocketArray) == 0) {
-		sleep(10);
+		//sleep(10);
 		return 1;
 	}
 	

@@ -9,28 +9,18 @@
  */
 
 #import "PortForwardTest.h"
-#import <sys/socket.h>
-#import <sys/un.h>
+
 
 
 @implementation PortForwardTest
 - (id)init {
 	if ( (self = [super init]) ) {
-		struct sockaddr_un address;
-		bzero(&address,sizeof(struct sockaddr_un));
-		address.sun_family = AF_UNIX;
-		strcpy(address.sun_path,"/tmp/PFSocket");
-		NSSocketPort *port = [[NSSocketPort alloc] initRemoteWithProtocolFamily:PF_UNIX socketType:SOCK_STREAM protocol:0 address:[NSData dataWithBytes:&address length:sizeof(struct sockaddr_un)]];
-		connection = [[NSConnection alloc] initWithReceivePort:nil sendPort:port];
-		[port release];
-		[self performSelector:@selector(printHello) withObject:nil afterDelay:1.0];
+		mPortMapper = [EZPortMapper sharedPortMapper];
 	}
 	return self;
 }
 
 -(void)printHello {
-	id object = [connection rootProxy];
-	NSLog(@"This thing should say hello: %@", [object getHello]);
 }
 @end
 

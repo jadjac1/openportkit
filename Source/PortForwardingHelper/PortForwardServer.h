@@ -10,7 +10,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import <CoreFoundation/CoreFoundation.h>
-#import "PortForwardClient.h"
+#import "EZPortForwardClient.h"
 #import "EZPortMapperHelpers.h"
 
 @interface EZPortForwardServer : NSObject {
