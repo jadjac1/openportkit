@@ -9,22 +9,10 @@
  */
 
 #import <Foundation/Foundation.h>
-#import <CoreFoundation/CoreFoundation.h>
-#import <SystemConfiguration/SystemConfiguration.h>
-
+@class EZPortForwardClient;
 @interface EZPortMapper : NSObject {
-	NSTimer*			rebroadcastTimer;
-	CFSocketRef			socket;
-	SCDynamicStoreRef	dynamicStore;
-	NSString*			privateRouterIPAddress;
-	NSMutableArray*		packets;
+	EZPortForwardClient *mPortForwardClient;
 }
 +(id)sharedPortMapper;
--(BOOL)isPrivateIPAddress:(NSString *)ip;
--(NSString *)defaultGatewayAddress;
--(BOOL)determinePublicIPAddress;
--(void)requestMappingFromPublicPort:(UInt16)publicPort toPrivatePort:(UInt16)privatePort forProtocol:(NSString *)protocol;
 
-
--(void)_setDefaultGatewayAddress:(NSString *)router;
 @end

@@ -10,63 +10,25 @@
 
 #import "PortForwardServer.h"
 #import "EZPortMapperHelpers.h"
-#import "PortForwardClient.h"
+#import "EZPortForwardClient.h"
 #import <SystemConfiguration/SystemConfiguration.h>
 
 #include <sys/socket.h>
 #include <arpa/inet.h>
-@implementation EZPortForwardServer
+
+#define kPFServerShutdownTime   20.0
+#define kPFServerPingInterval	20.0
 
 void EZPortForwardServerCFSocketCallback(CFSocketRef socket, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info);
 
-void EZPortForwardServerCFDynamicStoreCallback(SCDynamicStoreRef store, CFArrayRef changedKeys, void *info);
+@implementation EZPortForwardServer
 
-#define kGlobalIPv4SettingsKey		@"State:/Network/Global/IPv4"
 // designated initializer
 -(id)init {
 	if ((self = [super init])) {
-		mClients = [[NSMutableArray alloc] init];
-		mRequestQueue = [[NSMutableArray alloc] init];
-		mPingTimer = [[NSTimer timerWithTimeInterval:60.0 target:self selector:@selector(removeInactiveClients) userInfo:nil repeats:YES] retain];
-		
-		CFRunLoopRef runLoopRef = [[NSRunLoop currentRunLoop] getCFRunLoop];
-		mSocket = CFSocketCreate(kCFAllocatorDefault, PF_INET, SOCK_DGRAM, IPPROTO_UDP , kCFSocketDataCallBack, EZPortForwardServerCFSocketCallback, NULL);
-		if (!mSocket) {
-			[self release];
-			return nil;
-		}
-		
-		CFRunLoopSourceRef socketSourceRef = CFSocketCreateRunLoopSource(kCFAllocatorDefault, mSocket, 0);
-		CFRunLoopAddSource(runLoopRef, socketSourceRef, kCFRunLoopCommonModes);
-		CFRelease(socketSourceRef);
-		
-		struct sockaddr_in addr;
-		bzero(&addr,sizeof(struct sockaddr_in));
-		addr.sin_family = AF_INET;
-		addr.sin_port = htons(0);
-		addr.sin_addr.s_addr = INADDR_ANY;
-		if(bind(CFSocketGetNative(mSocket), (struct sockaddr *)&addr, sizeof(struct sockaddr)) != 0) {
-			[self release];
-			return nil;
-		}
-		
-		SCDynamicStoreRef dynamicStore = SCDynamicStoreCreate(kCFAllocatorDefault, (CFStringRef)[[NSProcessInfo processInfo] processName], EZPortForwardServerCFDynamicStoreCallback, NULL);
-		
-		CFPropertyListRef properties = SCDynamicStoreCopyValue(dynamicStore, (CFStringRef)kGlobalIPv4SettingsKey);
-		
-		if (properties) {
-			mRouterAddress = [[((NSDictionary *)properties)objectForKey:@"Router"] copy];
-			struct sockaddr_in routerAddress;
-			bzero (&routerAddress, sizeof(struct sockaddr_in));
-			routerAddress.sin_family = AF_INET;
-			routerAddress.sin_port = htons(5351);
-			routerAddress.sin_addr.s_addr = inet_addr([mRouterAddress UTF8String]);
-			connect(CFSocketGetNative(mSocket), (struct sockaddr*)&routerAddress, sizeof(struct sockaddr_in));
-			
-			CFRelease(properties);
-			properties = NULL;
-		}
-		
+		mClients = [[NSMutableDictionary alloc] init];
+		mKillTimer = [[NSTimer timerWithTimeInterval:kPFServerShutdownTime target:self selector:@selector(shutdownServer) userInfo:nil repeats:NO] retain];
+		[[NSRunLoop currentRunLoop] addTimer:mKillTimer forMode:NSDefaultRunLoopMode];
 	}
 	return self;
 }
@@ -74,21 +36,10 @@ void EZPortForwardServerCFDynamicStoreCallback(SCDynamicStoreRef store, CFArrayR
 -(void)dealloc {
 	[mKillTimer release];
 	[mClients release];
+	if (mSocket)
+		CFRelease(mSocket);
+	
 	[super dealloc];
-}
-
-- (void)setRouterAddress:(NSString *)address {
-	if (![address isEqualToString:mRouterAddress]) {
-		struct sockaddr_in routerAddress;
-		bzero (&routerAddress, sizeof(struct sockaddr_in));
-		routerAddress.sin_family = AF_INET;
-		routerAddress.sin_port = htons(5351);
-		routerAddress.sin_addr.s_addr = inet_addr([address UTF8String]);
-		connect(CFSocketGetNative(mSocket), (struct sockaddr*)&routerAddress, sizeof(struct sockaddr_in));
-		mRouterAddress = [address copy];
-		// if connect gave us an error, the network just changed. ignore this for now - BUG.
-	}
-		
 }
 
 -(long)registerClient:(EZPortForwardClient *)client {
@@ -98,63 +49,22 @@ void EZPortForwardServerCFDynamicStoreCallback(SCDynamicStoreRef store, CFArrayR
 		mKillTimer = nil;
 	}
 	[mClients setObject:client forKey:[NSNumber numberWithLong:(long)client]];
+	
+	if (!mPingTimer) {
+		mPingTimer = [[NSTimer alloc] initWithFireDate:[NSDate date] interval:kPFServerPingInterval target:self selector:@selector(removeInactiveClients) userInfo:nil repeats:YES];
+		[[NSRunLoop currentRunLoop] addTimer:mPingTimer forMode:NSDefaultRunLoopMode];
+	}
 	return (long)client;
 }
 
 
 - (void)unregisterClient:(long)clientID {
 	// clean up any mappings that this client may have
-	[mClients removeObjectForKey:[NSNumber numberWithLong:clientID]];
+	@try {
+		[mClients removeObjectForKey:[NSNumber numberWithLong:clientID]];
+	} @catch (NSException *e) { }
 }
 
-
-#define kPFSClientID	@"kPFSClientID"
-#define kPFSPacket		@"kPFSPacket"
-
-- (void)requestMappingFromRemotePort:(UInt16)remotePort toLocalPort:(UInt16)localPort withMappingType:(EZMappingType)mappingType forClientID:(long)clientID {
-	
-	if (![mClients objectForKey:[NSNumber numberWithLong:clientID]])
-		return; // ignore it when the client has not registered properly
-
-	[self addRequest:[NSDictionary dictionaryWithObjectsAndKeys:[[[EZPortMappingRequestPacket alloc] initWithLocalPort:localPort remotePort:remotePort mappingType:mappingType] autorelease], kPFSPacket, [NSNumber numberWithLong:clientID], kPFSClientID, nil]];
-}
-
-- (void)requestIPAddressForClientID:(long)clientID {
-	if (![mClients objectForKey:[NSNumber numberWithLong:clientID]])
-		return; // ignore it when the client has not registered properly
-	[self addRequest:[NSDictionary dictionaryWithObjectsAndKeys:[[[EZIPRequestPacket alloc] init] autorelease], kPFSPacket, [NSNumber numberWithLong:clientID], kPFSClientID, nil]];
-}
-
-- (void)addRequest:(NSDictionary *)request {
-	// set up the request queue if this is the first one
-	[mRequestQueue addObject:request];
-}
-
-- (void)processRequest {
-	[mRequestTimer release];
-	mRequestTimer = nil;
-	
-	if (![mRequestQueue count]) return;
-	
-	// request timed out
-	if (fabs(mRequestTimeout - 64.0) < 0.5) {
-		mRequestTimeout = 0.0;
-		return;
-	}
-	
-	if (fabs(mRequestTimeout) < 0.1)
-		mRequestTimeout = 0.5;
-	else
-		mRequestTimeout *= mRequestTimeout;
-	
-	NSDictionary* request = [mRequestQueue objectAtIndex:0];
-	id packet = [request objectForKey:kPFSPacket];
-	mLastPacketType = [packet class];
-	
-	CFSocketSendData(mSocket, NULL, (CFDataRef)[packet data], 5.0);
-	
-	mRequestTimer = [[NSTimer timerWithTimeInterval:mRequestTimeout target:self selector:@selector(processRequest) userInfo:nil repeats:NO] retain];
-}
 
 - (void)removeInactiveClients {
 	NSEnumerator *keyEnumerator = [[mClients allKeys] objectEnumerator];
@@ -170,19 +80,18 @@ void EZPortForwardServerCFDynamicStoreCallback(SCDynamicStoreRef store, CFArrayR
 		}
 	}
 	
-	if ([[mClients allKeys] count] == 0)
-		mKillTimer = [[NSTimer timerWithTimeInterval:60.0 target:self selector:@selector(shutdownServer) userInfo:nil repeats:NO] retain];
+	if ([[mClients allKeys] count] == 0 && !mKillTimer) {
+		[mPingTimer invalidate];
+		[mPingTimer release];
+		mPingTimer = nil;
+		
+		mKillTimer = [[NSTimer timerWithTimeInterval:kPFServerShutdownTime target:self selector:@selector(shutdownServer) userInfo:nil repeats:NO] retain];
+		[[NSRunLoop currentRunLoop] addTimer:mKillTimer forMode:NSDefaultRunLoopMode];
+	}
 }
 
 - (void)shutdownServer {
 	exit(0);
-}
-
-#pragma mark CoreFoundation callbacks
-void EZPortForwardServerCFSocketCallback(CFSocketRef socket, CFSocketCallBackType callbackType, CFDataRef address, const void *data, void *info) {
-}
-
-void EZPortForwardServerCFDynamicStoreCallback(SCDynamicStoreRef store, CFArrayRef changedKeys, void *info) {
 }
 
 @end
